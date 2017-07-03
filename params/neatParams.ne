@@ -30,9 +30,9 @@ dropoff_age 15
 newlink_tries 20
 print_every 1
 babies_stolen 0
-num_runs 2
+num_runs 1
 num_gens 10
-num_runs_per_gen 1
+num_runs_per_gen 2
 num_runs_post_eval 20
 weight_lower_bound -8.0
 weight_upper_bound 8.0

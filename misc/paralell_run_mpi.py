@@ -16,12 +16,12 @@ import random
 
 NEAT_DIR = "/path/to/your/installation"
 
-QUEUE='short' #or 'long'
+QUEUE='long' #or 'short'
 #MACHINE='opteron2216' #rack 1
-MACHINE='xeon5410' #rack 2
+#MACHINE='xeon5410' #rack 2
 #MACHINE='opteron6128' #rack 3
 #MACHINE='opteron6272' #rack 4
-#MACHINE='xeon2680' #rack 5
+MACHINE='xeon2680' #rack 5
 
 
 ###############################################################################

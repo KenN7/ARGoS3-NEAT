@@ -21,6 +21,7 @@
 #include "NEAT/genome.h"
 
 #include <map>
+#include <deque>
 
 using namespace argos;
 
@@ -91,6 +92,11 @@ protected:
    UInt32 m_unTimeStep;
 
    Real m_fLeftSpeed, m_fRightSpeed;
+
+   // message for gianduja
+   UInt8 m_unMessageToSend;
+   //queue for gndsensor
+   std::deque<CCI_EPuckGroundSensor::SReadings> m_deqGroundInput;
 
    argos::CRandom::CRNG* m_pcRNG;
 
@@ -4308,7 +4314,7 @@ const float CEPuckNEATController::m_GraySamplesLeft[4205] = {
 0.535508,
 0.500488};
 
-const float CEPuckNEATController::m_GraySamplesCenter[4205] = {
+const float CEPuckNNController::m_GraySamplesCenter[4205] = {
 0.23196,
 0.23196,
 0.23196,
@@ -8515,7 +8521,7 @@ const float CEPuckNEATController::m_GraySamplesCenter[4205] = {
 0.307963,
 0.284651};
 
-const float CEPuckNEATController::m_GraySamplesRight[4205] = {
+const float CEPuckNNController::m_GraySamplesRight[4205] = {
 0.872714,
 0.899225,
 0.872714,
