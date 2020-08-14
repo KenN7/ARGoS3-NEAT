@@ -11,7 +11,7 @@
   <!-- ****************** -->
   <!-- * Loop functions * -->
   <!-- ****************** -->
-  <loop_functions library="/home/ken/depots/experiments-loop-functions/build/loop-functions/gianduja/libgianduja_aggregation_loopfunc.so"
+  <loop_functions library="/home/khasselmann/experiments-loop-functions/build/loop-functions/gianduja/libgianduja_aggregation_loopfunc.so"
    label="gianduja_aggregation_loop_functions">
    <params dist_radius="1.2" number_robots="20"/>
   </loop_functions>
@@ -22,20 +22,20 @@
   <controllers>
 	<!-- TRANSMITTER -->
     <epuck_nn_controller id="epuck_nn_controller"
-                        library="/home/ken/depots/neat-argos3/build/src/controllers/libnn_rm_2dot1.so">
+                        library="/home/khasselmann/neat-argos3/build/src/controllers/libnn_rm_2dot2.so">
       <actuators>
-        <epuck_wheels implementation="default" noise_std_dev="0.15"/>
+        <epuck_wheels implementation="default" noise_std_dev="0.05"/>
         <epuck_rgb_leds implementation="default" medium="leds"/>
         <epuck_range_and_bearing implementation="medium" medium="rab" data_size="4" range="0.5"/>
       </actuators>
       <sensors>
 		    <epuck_proximity implementation="default" show_rays="false" noise_level="0.05" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/proximity_sensor.xml"/>
-        <epuck_range_and_bearing implementation="medium" medium="rab" data_size="4" nois_std_deviation="1.5" loss_probability="0.90" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/range_and_bearing_sensor.xml"/>
-		    <epuck_light implementation="default" show_rays="false" noise_level="0.9" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/light_sensor.xml"/>
+        <epuck_range_and_bearing implementation="medium" medium="rab" data_size="4" nois_std_deviation="1.5" loss_probability="0.80" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/range_and_bearing_sensor.xml"/>
+		    <epuck_light implementation="default" show_rays="false" noise_level="0.05" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/light_sensor.xml"/>
 		    <epuck_ground implementation="rot_z_only" noise_level="0.002" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/ground_sensor.xml"/>
 		    <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false"/>
       </sensors>
-    <params readable='false' history='false' hist-folder='./fsm_history/' genome_file=''/>
+    <params readable='false' history='false' hist-folder='./fsm_history/' fsm-config="--nstates 1 --s0 1 --brd0 0"/>
     </epuck_nn_controller>
   </controllers>
 
@@ -49,11 +49,9 @@
 
     <!-- Change the light here -->
     <!-- <distribute>
-         <position method="uniform" min="-1,-1,0.4" max="1,1,0.4" />
-         <orientation method="gaussian" mean="0,0,0" std_dev="360,0,0" />
-         <entity quantity="1" max_trials="100">
-            <light id="light" intensity="0.8" color="yellow" medium="leds"/>
-         </entity>
+         <position method="uniform" min="-1,-1,0" max="1,1,0" />
+         <intensity method="uniform" min="0.0" max="1.0" />
+	        <light id="light" orientation="0,0,0" color="yellow" medium="leds"/>
     </distribute> -->
     <light id="light0" position="0,-1.5,0.4" orientation="0,0,0" color="yellow" intensity="0.0" medium="leds"/>
 
@@ -130,14 +128,14 @@
   <!-- * Visualization * -->
   <!-- ***************** -->
   <visualization>
-    <qt-opengl>
+    <!-- <qt-opengl>
       <camera>
         <placement idx="0"
                    position="0,0,4.5"
                    look_at="0,0,0"
                    lens_focal_length="30" />
       </camera>
-    </qt-opengl>
+    </qt-opengl> -->
   </visualization>
 
 </argos-configuration>

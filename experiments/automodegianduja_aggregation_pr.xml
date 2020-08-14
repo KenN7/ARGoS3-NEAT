@@ -11,7 +11,7 @@
   <!-- ****************** -->
   <!-- * Loop functions * -->
   <!-- ****************** -->
-  <loop_functions library="/home/ken/depots/experiments-loop-functions/build/loop-functions/gianduja/libgianduja_aggregation_loopfunc.so"
+  <loop_functions library="/home/ken/depots/experiments-loop-functions/build//loop-functions/gianduja/libgianduja_aggregation_loopfunc.so"
    label="gianduja_aggregation_loop_functions">
    <params dist_radius="1.2" number_robots="20"/>
   </loop_functions>
@@ -22,7 +22,7 @@
   <controllers>
 	<!-- TRANSMITTER -->
     <epuck_nn_controller id="epuck_nn_controller"
-                        library="/home/ken/depots/neat-argos3/build/src/controllers/libnn_rm_2dot1.so">
+                        library="/home/ken/depots/neat-argos3/build/src/controllers/libnn_rm_2dot05.so">
       <actuators>
         <epuck_wheels implementation="default" noise_std_dev="0.15"/>
         <epuck_rgb_leds implementation="default" medium="leds"/>
@@ -55,7 +55,7 @@
             <light id="light" intensity="0.8" color="yellow" medium="leds"/>
          </entity>
     </distribute> -->
-    <light id="light0" position="0,-1.5,0.4" orientation="0,0,0" color="yellow" intensity="0.0" medium="leds"/>
+    <light id="light0" position="0,-1,0.4" orientation="0,0,0" color="yellow" intensity="0.0" medium="leds"/>
 
   <!--Dodecagonal arena with side of length .66-->
   <box id="wall_1" size="0.01,.66,0.08" movable="false">
@@ -130,14 +130,14 @@
   <!-- * Visualization * -->
   <!-- ***************** -->
   <visualization>
-    <qt-opengl>
+    <!-- <qt-opengl>
       <camera>
         <placement idx="0"
                    position="0,0,4.5"
                    look_at="0,0,0"
                    lens_focal_length="30" />
       </camera>
-    </qt-opengl>
+    </qt-opengl> -->
   </visualization>
 
 </argos-configuration>

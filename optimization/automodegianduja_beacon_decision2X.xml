@@ -11,8 +11,8 @@
   <!-- ****************** -->
   <!-- * Loop functions * -->
   <!-- ****************** -->
-  <loop_functions library="/home/ken/depots/experiments-loop-functions/build/loop-functions/gianduja/libgianduja_aggregation_loopfunc.so"
-   label="gianduja_aggregation_loop_functions">
+  <loop_functions library="/home/khasselmann/experiments-loop-functions/build/loop-functions/gianduja/libgianduja_beacon_decision_loopfunc.so"
+   label="gianduja_beacon_decision_loop_functions">
    <params dist_radius="1.2" number_robots="20"/>
   </loop_functions>
 
@@ -22,21 +22,39 @@
   <controllers>
 	<!-- TRANSMITTER -->
     <epuck_nn_controller id="epuck_nn_controller"
-                        library="/home/ken/depots/neat-argos3/build/src/controllers/libnn_rm_2dot1.so">
+            library="/home/khasselmann/neat-argos3/build/src/controllers/libnn_rm_2dot2X.so">
       <actuators>
-        <epuck_wheels implementation="default" noise_std_dev="0.15"/>
+        <epuck_wheels implementation="default" noise_std_dev="0.05"/>
         <epuck_rgb_leds implementation="default" medium="leds"/>
         <epuck_range_and_bearing implementation="medium" medium="rab" data_size="4" range="0.5"/>
       </actuators>
       <sensors>
 		    <epuck_proximity implementation="default" show_rays="false" noise_level="0.05" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/proximity_sensor.xml"/>
-        <epuck_range_and_bearing implementation="medium" medium="rab" data_size="4" nois_std_deviation="1.5" loss_probability="0.90" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/range_and_bearing_sensor.xml"/>
-		    <epuck_light implementation="default" show_rays="false" noise_level="0.9" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/light_sensor.xml"/>
+        <epuck_range_and_bearing implementation="medium" medium="rab" data_size="4" nois_std_deviation="1.5" loss_probability="0.80" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/range_and_bearing_sensor.xml"/>
+		    <epuck_light implementation="default" show_rays="false" noise_level="0.05" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/light_sensor.xml"/>
 		    <epuck_ground implementation="rot_z_only" noise_level="0.002" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/ground_sensor.xml"/>
 		    <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false"/>
       </sensors>
-    <params readable='false' history='false' hist-folder='./fsm_history/' genome_file=''/>
+    <params readable='false' history='false' hist-folder='./fsm_history/' fsm-config=""/>
     </epuck_nn_controller>
+
+    <epuck_beacon id="beacon" library="/home/khasselmann/robots-thesis/build/beacon_epuck/libepuck_beacon.so">
+        <actuators>
+          <epuck_wheels implementation="default" noise_std_dev="0.05"/>
+          <epuck_rgb_leds implementation="default" medium="leds"/>
+          <epuck_range_and_bearing implementation="medium" medium="rab" data_size="4" range="0.5"/>
+          <epuck_base_leds implementation="default" medium="leds" />
+        </actuators>
+        <sensors>
+  		    <epuck_proximity implementation="default" show_rays="false" noise_level="0.05" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/proximity_sensor.xml"/>
+          <epuck_range_and_bearing implementation="medium" medium="rab" data_size="4" nois_std_deviation="1.5" loss_probability="0.80" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/range_and_bearing_sensor.xml"/>
+  		    <epuck_light implementation="default" show_rays="false" noise_level="0.05" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/light_sensor.xml"/>
+  		    <epuck_ground implementation="rot_z_only" noise_level="0.002" calibrated="true" low_level_config="/home/root/aligot/low_level_configuration/ground_sensor.xml"/>
+  		    <epuck_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false"/>
+        </sensors>
+        <params time="0" velocity="0" mes="3" />
+    </epuck_beacon>
+
   </controllers>
 
   <!-- ********* -->
@@ -55,7 +73,7 @@
             <light id="light" intensity="0.8" color="yellow" medium="leds"/>
          </entity>
     </distribute> -->
-    <light id="light0" position="0,-1.5,0.4" orientation="0,0,0" color="yellow" intensity="0.0" medium="leds"/>
+    <light id="light0" position="0,-1.5,0.4" orientation="0,0,0" color="yellow" intensity="3.0" medium="leds"/>
 
   <!--Dodecagonal arena with side of length .66-->
   <box id="wall_1" size="0.01,.66,0.08" movable="false">
@@ -98,6 +116,11 @@
   <!-- ********** -->
   <!-- * E-Puck * -->
   <!-- ********** -->
+  <e-puck id="beacon0">
+    <body orientation="0,0,0" position="0,0.5,0" />
+    <controller config="beacon" />
+  </e-puck>
+
   <distribute>
     <position method="uniform" min="-1,-1,0" max="1,1,0" />
     <orientation method="gaussian" mean="0,0,0" std_dev="360,0,0" />
@@ -130,14 +153,14 @@
   <!-- * Visualization * -->
   <!-- ***************** -->
   <visualization>
-    <qt-opengl>
+    <!-- <qt-opengl>
       <camera>
         <placement idx="0"
                    position="0,0,4.5"
                    look_at="0,0,0"
                    lens_focal_length="30" />
       </camera>
-    </qt-opengl>
+    </qt-opengl> -->
   </visualization>
 
 </argos-configuration>

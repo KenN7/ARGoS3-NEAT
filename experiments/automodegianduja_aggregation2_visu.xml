@@ -22,7 +22,7 @@
   <controllers>
 	<!-- TRANSMITTER -->
     <epuck_nn_controller id="epuck_nn_controller"
-                        library="/home/ken/depots/neat-argos3/build/src/controllers/libnn_rm_2dot1.so">
+                        library="/home/ken/depots/neat-argos3/build/src/controllers/libnn_rm_2dot2.so">
       <actuators>
         <epuck_wheels implementation="default" noise_std_dev="0.15"/>
         <epuck_rgb_leds implementation="default" medium="leds"/>
