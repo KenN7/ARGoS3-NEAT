@@ -118,6 +118,8 @@ extern inline double randfloat() { return rand() / (double)RAND_MAX; }
 // ascent as possible between -0.5 and 0.5
 extern double fsigmoid(double, double, double);
 
+extern double frelu(double);
+
 // Hebbian Adaptation Function
 // Based on equations in Floreano & Urzelai 2000
 // Takes the current weight, the maximum weight in the containing network,

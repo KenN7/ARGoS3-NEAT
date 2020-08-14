@@ -226,7 +226,7 @@ Genome::Genome(int new_id, int i, int o, int n, int nmax, bool r, double linkpro
     int count;
 
     int ncount; // Node and connection counters
-    int ccount;
+    /* int ccount; */
 
     int row; // For navigating the matrix
     int col;
@@ -305,7 +305,7 @@ Genome::Genome(int new_id, int i, int o, int n, int nmax, bool r, double linkpro
     // cout<<"Built nodes"<<endl;
 
     // Connect the nodes
-    ccount = 1; // Start the connection counter
+    /* ccount = 1; // Start the connection counter */
 
     // Step through the connection matrix, creating connection genes
     cmp = cm;
@@ -1658,10 +1658,10 @@ bool Genome::mutate_add_link(std::vector<Innovation*>& innovs, double& curinnov,
                     recurflag = true;
 
                 // Exit if the network is faulty (contains an infinite loop)
-                if (count > thresh) {
+                /* if (count > thresh) { */
                     // cout<<"LOOP DETECTED DURING A RECURRENCY CHECK"<<std::endl;
                     // return false;
-                }
+                /* } */
 
                 // Make sure it finds the right kind of link (recur or not)
                 if (recurflag)
@@ -1781,12 +1781,12 @@ void Genome::mutate_add_sensor(std::vector<Innovation*>& innovs, double& curinno
     double newweight = 0.0;
     Gene* newgene;
 
-    int i, j; // counters
+    unsigned int i, j; // counters
     bool found;
 
     bool done;
 
-    int outputConnections;
+    unsigned int outputConnections;
 
     std::vector<Trait*>::iterator thetrait;
     int traitnum;
@@ -1810,7 +1810,7 @@ void Genome::mutate_add_sensor(std::vector<Innovation*>& innovs, double& curinno
 
         outputConnections = 0;
 
-        for (int j = 0; j < genes.size(); j++) {
+        for (unsigned int j = 0; j < genes.size(); j++) {
             gene = genes[j];
 
             if ((gene->lnk)->out_node->gen_node_label == OUTPUT)
@@ -1830,7 +1830,7 @@ void Genome::mutate_add_sensor(std::vector<Innovation*>& innovs, double& curinno
     sensor = sensors[randint(0, sensors.size() - 1)];
 
     // Add new links to chosen sensor, avoiding redundancy
-    for (int i = 0; i < outputs.size(); i++) {
+    for (unsigned int i = 0; i < outputs.size(); i++) {
         output = outputs[i];
 
         found = false;
@@ -2886,13 +2886,13 @@ double Genome::compatibility(Genome* g) {
     double mut_diff_total = 0.0;
     double num_matching = 0.0; // Used to normalize mutation_num differences
 
-    double max_genome_size; // Size of larger Genome
+    /* double max_genome_size; // Size of larger Genome */
 
-    // Get the length of the longest Genome for percentage computations
-    if (genes.size() < (g->genes).size())
-        max_genome_size = (g->genes).size();
-    else
-        max_genome_size = genes.size();
+    /* // Get the length of the longest Genome for percentage computations */
+    /* if (genes.size() < (g->genes).size()) */
+    /*     max_genome_size = (g->genes).size(); */
+    /* else */
+    /*     max_genome_size = genes.size(); */
 
     // Now move through the Genes of each potential parent
     // until both Genomes end
