@@ -4314,7 +4314,7 @@ const float CEPuckNEATController::m_GraySamplesLeft[4205] = {
 0.535508,
 0.500488};
 
-const float CEPuckNNController::m_GraySamplesCenter[4205] = {
+const float CEPuckNEATController::m_GraySamplesCenter[4205] = {
 0.23196,
 0.23196,
 0.23196,
@@ -8521,7 +8521,7 @@ const float CEPuckNNController::m_GraySamplesCenter[4205] = {
 0.307963,
 0.284651};
 
-const float CEPuckNNController::m_GraySamplesRight[4205] = {
+const float CEPuckNEATController::m_GraySamplesRight[4205] = {
 0.872714,
 0.899225,
 0.872714,
